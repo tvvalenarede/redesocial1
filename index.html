@@ -1,35 +1,653 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVR Brazil - Soluções Jurídicas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui;
+        }
+
+        :root {
+            --primary: #1a3e72;
+            --secondary: #d4af37;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        /* Cabeçalho Principal */
+        .main-header {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 5px solid var(--secondary);
+            position: relative;
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header-logo {
+            max-width: 180px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .header-tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navegação */
+        .navbar {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .navbar a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Serviços */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        /* Advogados */
+        .attorneys {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .attorney-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .attorney-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .attorney-img {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .attorney-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .attorney-card:hover .attorney-img img {
+            transform: scale(1.05);
+        }
+
+        .attorney-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .attorney-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .attorney-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            background: var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .quiz-container h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-step p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            margin: 0;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        #quiz-result {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Contato */
+        .contact {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-btn {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .contact-btn:hover {
+            background: #c9a227;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <header class="main-header">
-        <img src="logocerto.png" alt="Logo TVVALENAREDE">
+        <img src="https://github.com/tvvalenarede/parte1/raw/main/fotologotipo1.png" alt="TVR Brazil" class="header-logo">
+        <h1>TVR BRAZIL</h1>
+        <p class="header-tagline">Soluções Jurídicas com Excelência e Compromisso</p>
     </header>
 
-    <!-- Mantive o restante do HTML original igual -->
-    <div class="grid-container">
-        <!-- Sidebar Esquerda -->
-        <div class="sidebar">
-            <a href="https://www.youtube.com/watch?v=jfXF8m-zAcM&t=894s" class="nav-button">FUTEBOL ARQUIVO</a>
-            <!-- ... (todo o restante do HTML permanece igual ao original) ... -->
-        </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#services">Áreas de Atuação</a></li>
+            <li><a href="#attorneys">Nossa Equipe</a></li>
+            <li><a href="#quiz">Quiz Jurídico</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
 
-        <!-- Conteúdo Principal -->
-        <div class="main-content">
-            <!-- ... (conteúdo principal mantido igual) ... -->
-        </div>
+    <section class="hero" id="home">
+        <h1>Seus Direitos Protegidos</h1>
+        <p>Atendimento personalizado e estratégias jurídicas eficientes para alcançar os melhores resultados</p>
+        <a href="#contact" class="btn">Agende uma Consulta</a>
+    </section>
 
-        <!-- Sidebar Direita -->
-        <div class="sidebar">
-            <!-- ... (sidebar direita mantida igual) ... -->
+    <section class="services" id="services">
+        <div class="service-card" onclick="startQuiz('trabalhista')">
+            <h3>Direito Trabalhista</h3>
+            <p>Defesa dos direitos trabalhistas, rescisões, assédio moral e ações contra demissões injustas</p>
         </div>
-    </div>
+        <div class="service-card" onclick="startQuiz('previdenciario')">
+            <h3>Direito Previdenciário</h3>
+            <p>Aposentadorias, auxílio-doença, revisões de benefícios e ações contra o INSS</p>
+        </div>
+        <div class="service-card" onclick="startQuiz('familia')">
+            <h3>Direito de Família</h3>
+            <p>Divórcios, pensão alimentícia, guarda de filhos, inventários e partilha de bens</p>
+        </div>
+    </section>
 
-    <!-- Botões Fixos -->
-    <a href="https://made-center-taubate.webnode.page/produtos/" class="fixed-button">ACESSE MADE CENTER</a>
-    <a href="https://tvvalenarede.webnode.page/?_gl=1*tgfs5g*_gcl_au*MTI0NjU5NzMzNS4xNzQxNzI2MjQ1LjkzMjUyOTk2Mi4xNzQyMzA0NTI5LjE3NDIzMDQ1Mjg." class="fixed-button-left">J.E.C.S</a>
+    <section class="attorneys" id="attorneys">
+        <div class="attorney-card">
+            <div class="attorney-img">
+                <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Thiago Valente">
+            </div>
+            <div class="attorney-info">
+                <h4>Dr. Thiago Valente</h4>
+                <p>Especialista em Direito Trabalhista e Previdenciário com 15 anos de experiência</p>
+            </div>
+        </div>
+        <div class="attorney-card">
+            <div class="attorney-img">
+                <img src="https://images.unsplash.com/photo-1590086783191-a0694c7d1e6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dra. Renata Valente">
+            </div>
+            <div class="attorney-info">
+                <h4>Dra. Renata Valente</h4>
+                <p>Especialista em Direito de Família e Sucessões com ampla experiência em mediação</p>
+            </div>
+        </div>
+        <div class="attorney-card">
+            <div class="attorney-img">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Lucas Valente">
+            </div>
+            <div class="attorney-info">
+                <h4>Dr. Lucas Valente</h4>
+                <p>Especialista em Direito Civil e Contratos com foco em soluções preventivas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-container" id="quiz">
+        <h2>Quiz Jurídico Inteligente</h2>
+        <div id="quiz-steps">
+            <div class="quiz-step active" id="step-1">
+                <p>Qual área do Direito você precisa de assistência?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="nextStep(1, 'Trabalhista')">Trabalhista</div>
+                    <div class="quiz-option" onclick="nextStep(1, 'Previdenciário')">Previdenciário</div>
+                    <div class="quiz-option" onclick="nextStep(1, 'Família')">Família</div>
+                </div>
+            </div>
+            <div class="quiz-step" id="step-2">
+                <p>Há quanto tempo você está com esse problema?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="nextStep(2, 'Menos de 6 meses')">Menos de 6 meses</div>
+                    <div class="quiz-option" onclick="nextStep(2, '6 meses a 2 anos')">6 meses a 2 anos</div>
+                    <div class="quiz-option" onclick="nextStep(2, 'Mais de 2 anos')">Mais de 2 anos</div>
+                </div>
+            </div>
+            <div class="quiz-step" id="step-3">
+                <p>Você já tomou alguma medida sobre o caso?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="nextStep(3, 'Nenhuma')">Nenhuma</div>
+                    <div class="quiz-option" onclick="nextStep(3, 'Procurou orientação')">Procurou orientação</div>
+                    <div class="quiz-option" onclick="nextStep(3, 'Já iniciou processo')">Já iniciou processo</div>
+                </div>
+            </div>
+        </div>
+        <div id="quiz-result"></div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Entre em Contato</h2>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/tvrbrazil@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+            
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Assunto</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Selecione...</option>
+                    <option value="Consulta Trabalhista">Consulta Trabalhista</option>
+                    <option value="Consulta Previdenciária">Consulta Previdenciária</option>
+                    <option value="Consulta Família">Consulta Família</option>
+                    <option value="Outro Assunto">Outro Assunto</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="contact-btn">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Início</a>
+            <a href="#services">Serviços</a>
+            <a href="#attorneys">Equipe</a>
+            <a href="#contact">Contato</a>
+        </div>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p>TVR Brazil Advogados Associados</p>
+        <p>© 2023 Todos os direitos reservados</p>
+    </footer>
 
     <script>
-        // Script original mantido igual
-        document.addEventListener('DOMContentLoaded', () => {
-            // ... (todo o script permanece igual) ...
+        // Quiz Jurídico
+        let currentStep = 1;
+        let answers = {};
+        
+        function startQuiz(area) {
+            document.getElementById('quiz').scrollIntoView({behavior: 'smooth'});
+            answers = { area: area };
+            showStep(1);
+        }
+        
+        function showStep(step) {
+            document.querySelectorAll('.quiz-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById(step-${step}).classList.add('active');
+            document.getElementById('quiz-result').style.display = 'none';
+        }
+        
+        function nextStep(step, answer) {
+            answers[step${step}] = answer;
+            
+            if (step < 3) {
+                showStep(step + 1);
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            const result = 
+                <h3>Recomendação Personalizada</h3>
+                <p>Com base nas suas respostas, identificamos que:</p>
+                <ul style="text-align: left; margin: 1rem 0 1rem 2rem;">
+                    <li>Área: ${answers.step1}</li>
+                    <li>Tempo do problema: ${answers.step2}</li>
+                    <li>Ações tomadas: ${answers.step3}</li>
+                </ul>
+                <p>Recomendamos uma consulta com nosso especialista em ${answers.step1} para avaliar seu caso detalhadamente.</p>
+                <a href="#contact" class="btn" style="display: inline-block; margin-top: 1rem;">Agendar Consulta</a>
+            ;
+            
+            document.getElementById('quiz-result').innerHTML = result;
+            document.getElementById('quiz-result').style.display = 'block';
+            document.querySelectorAll('.quiz-step').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+        
+        // Formulário de Contato
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Erro ao enviar mensagem');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.');
+            });
         });
+        
+        // Menu Mobile
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar.offsetHeight;
+        document.documentElement.style.setProperty('--scroll-padding', navbarHeight + 'px');
     </script>
 </body>
+</html>
